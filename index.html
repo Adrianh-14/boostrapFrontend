@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Galería con Modal Bootstrap</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1>Galería</h1>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <img
+            src="https://previews.123rf.com/images/galinadarla/galinadarla1608/galinadarla160800129/61906640-lime-same-sizes-stickers-on-purple-background-pattern-with-lime-and-leaves-with-slices.jpg"
+            alt="Lima en fondo púrpura"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="https://previews.123rf.com/images/galinadarla/galinadarla1608/galinadarla160800141/61906670-lime-same-sizes-stickers-on-orange-background-pattern-with-lime-and-leaves-and-slices.jpg"
+            alt="Lima en fondo naranja"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="https://us.123rf.com/450wm/galinadarla/galinadarla1608/galinadarla160800077/60988079-peque%C3%B1o-cal-de-diferentes-tama%C3%B1os-de-etiqueta-engomada-de-fondo-rojo-patr%C3%B3n-con-lim%C3%B3n-y-hojas-y.jpg?ver=6"
+            alt="Lima en fondo rojo"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="https://us.123rf.com/450wm/oleg525/oleg5252009/oleg525200900122/154646461-ilustraci%C3%B3n-sobre-el-tema-pomelo-sin-costuras-de-color-grande-patr%C3%B3n-de-fruta-brillante-para-el.jpg?ver=6"
+            alt="Pomelo brillante"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="https://previews.123rf.com/images/galinadarla/galinadarla1608/galinadarla160800072/60988077-lime-same-sizes-sticker-red-background-pattern-with-lemon-and-leaves-and-slices.jpg"
+            alt="Lima fondo rojo y hojas"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+        <div class="col">
+          <img
+            src="https://us.123rf.com/450wm/galinadarla/galinadarla1608/galinadarla160800141/61906670-lime-same-sizes-stickers-on-orange-background-pattern-with-lime-and-leaves-and-slices.jpg"
+            alt="Lima fondo naranja repetido"
+            class="img-fluid rounded"
+            style="cursor: pointer"
+            data-bs-toggle="modal"
+            data-bs-target="#miModal"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="miModal"
+      tabindex="-1"
+      aria-labelledby="modalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Vista previa</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img id="modalImg" src="" alt="" class="img-fluid rounded" />
+            <p id="modalCaption"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const modal = document.getElementById("miModal");
+      const modalImg = document.getElementById("modalImg");
+      const modalCaption = document.getElementById("modalCaption");
+
+      modal.addEventListener("show.bs.modal", (event) => {
+        const trigger = event.relatedTarget;
+        modalImg.src = trigger.src;
+        modalCaption.textContent = trigger.alt || "Sin descripción";
+      });
+
+      modalImg.addEventListener("click", () => {
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide();
+      });
+    </script>
+  </body>
+</html>
